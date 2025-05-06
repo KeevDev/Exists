@@ -5,9 +5,12 @@ import './App.css'
 
 import React from "react"
 import { useState, useEffect } from "react"
-import { Calendar, Clock, ListTodo, Settings, User } from "lucide-react"
-import { cn } from "./lib/utils"
+import { Calendar, ListTodo } from "lucide-react"
 import { useMediaQuery } from "./hooks/use-mobile"
+import { TimeBlock } from "./components/TimeBlock"
+import { QuickAccessCard } from "./components/QuickAccessCard"
+import { SideNavigation } from "./components/SideNavigation"
+import { BottomNavigation } from "./components/BottomNavigation"
 
 export default function Home() {
   const [timeLeft, setTimeLeft] = useState({
@@ -78,67 +81,6 @@ export default function Home() {
   )
 }
 
-function TimeBlock({ value, label }) {
-  return (
-    <div className="flex flex-col items-center">
-      <div className="bg-slate-700 rounded-lg w-full py-4 mb-2">
-        <span className="text-2xl md:text-4xl font-bold text-blue-300">{value}</span>
-      </div>
-      <span className="text-sm text-slate-300">{label}</span>
-    </div>
-  )
-}
 
-function QuickAccessCard({ title, description, icon }) {
-  return (
-    <div className="bg-slate-700 p-4 rounded-lg flex items-center gap-4 hover:bg-slate-600 transition-colors cursor-pointer">
-      {icon}
-      <div>
-        <h3 className="font-medium text-blue-200">{title}</h3>
-        <p className="text-sm text-slate-300">{description}</p>
-      </div>
-    </div>
-  )
-}
 
-function BottomNavigation() {
-  return (
-    <div className="fixed bottom-0 left-0 right-0 bg-slate-800 border-t border-slate-700 px-2 py-3">
-      <div className="flex justify-around items-center">
-        <NavItem icon={<Clock />} label="Inicio" active />
-        <NavItem icon={<ListTodo />} label="Tareas" />
-        <NavItem icon={<Calendar />} label="Calendario" />
-        <NavItem icon={<User />} label="Perfil" />
-        <NavItem icon={<Settings />} label="Ajustes" />
-      </div>
-    </div>
-  )
-}
 
-function SideNavigation() {
-  return (
-    <div className="fixed top-0 left-0 h-full w-16 bg-slate-800 border-r border-slate-700 flex flex-col items-center py-8 gap-8">
-      <NavItem icon={<Clock />} label="Inicio" active />
-      <NavItem icon={<ListTodo />} label="Tareas" />
-      <NavItem icon={<Calendar />} label="Calendario" />
-      <NavItem icon={<User />} label="Perfil" />
-      <NavItem icon={<Settings />} label="Ajustes" />
-    </div>
-  )
-}
-
-function NavItem({ icon, label, active = false }) {
-  return (
-    <div className="flex flex-col items-center gap-1">
-      <button
-        className={cn(
-          "p-2 rounded-full transition-colors",
-          active ? "text-blue-400 bg-slate-700" : "text-slate-400 hover:text-blue-300",
-        )}
-      >
-        {icon}
-      </button>
-      <span className="text-xs text-slate-400">{label}</span>
-    </div>
-  )
-}
