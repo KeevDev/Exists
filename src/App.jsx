@@ -47,7 +47,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-slate-900 text-white flex flex-col">
-      <main className="flex-1 flex flex-col items-center justify-center p-6">
+      <main className="flex flex-col items-center justify-center p-6">
         <h1 className="text-3xl md:text-4xl font-bold text-blue-400 mb-8">Mi Organizador Personal</h1>
 
         <div className="w-full max-w-3xl bg-slate-800 rounded-xl p-6 shadow-lg">
